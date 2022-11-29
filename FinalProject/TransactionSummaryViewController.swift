@@ -9,10 +9,11 @@ import UIKit
 
 class TransactionSummaryViewController: UIViewController {
 
+    @IBOutlet weak var transactionSummary: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        transactionSummary.text = "Transaction Summary"
     }
     
 

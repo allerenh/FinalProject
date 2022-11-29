@@ -11,6 +11,7 @@
 		2D45784D293684C400184F09 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45784C293684C400184F09 /* StockDetailViewController.swift */; };
 		2D45784F2936881100184F09 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45784E2936881100184F09 /* StockListViewController.swift */; };
 		2D45785129368D1200184F09 /* TransactionSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45785029368D1200184F09 /* TransactionSummaryViewController.swift */; };
+		2D4578532936914500184F09 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4578522936914500184F09 /* StockTableViewCell.swift */; };
 		2DA9E1BB292DA07D00EF5845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E1BA292DA07D00EF5845 /* AppDelegate.swift */; };
 		2DA9E1BD292DA07D00EF5845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E1BC292DA07D00EF5845 /* SceneDelegate.swift */; };
 		2DA9E1C2292DA07D00EF5845 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DA9E1C0292DA07D00EF5845 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		2D45784C293684C400184F09 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		2D45784E2936881100184F09 /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
 		2D45785029368D1200184F09 /* TransactionSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSummaryViewController.swift; sourceTree = "<group>"; };
+		2D4578522936914500184F09 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		2DA9E1B7292DA07D00EF5845 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA9E1BA292DA07D00EF5845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DA9E1BC292DA07D00EF5845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				2D45784E2936881100184F09 /* StockListViewController.swift */,
 				2D45784C293684C400184F09 /* StockDetailViewController.swift */,
 				2D45785029368D1200184F09 /* TransactionSummaryViewController.swift */,
+				2D4578522936914500184F09 /* StockTableViewCell.swift */,
 				2DA9E1C0292DA07D00EF5845 /* Main.storyboard */,
 				2DA9E1C3292DA07E00EF5845 /* Assets.xcassets */,
 				2DA9E1C5292DA07E00EF5845 /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D4578532936914500184F09 /* StockTableViewCell.swift in Sources */,
 				2D45785129368D1200184F09 /* TransactionSummaryViewController.swift in Sources */,
 				2D45784D293684C400184F09 /* StockDetailViewController.swift in Sources */,
 				2D45784B2936849800184F09 /* LoginViewController.swift in Sources */,

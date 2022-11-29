@@ -9,9 +9,12 @@ import UIKit
 
 class StockDetailViewController: UIViewController {
 
+    @IBOutlet weak var stockName: UILabel!
+    var name: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        stockName.text = name
         // Do any additional setup after loading the view.
     }
     
