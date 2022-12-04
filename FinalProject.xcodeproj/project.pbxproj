@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D45784B2936849800184F09 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45784A2936849800184F09 /* LoginViewController.swift */; };
-		2D45784D293684C400184F09 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45784C293684C400184F09 /* StockDetailViewController.swift */; };
-		2D45784F2936881100184F09 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45784E2936881100184F09 /* StockListViewController.swift */; };
-		2D45785129368D1200184F09 /* TransactionSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D45785029368D1200184F09 /* TransactionSummaryViewController.swift */; };
-		2D4578532936914500184F09 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4578522936914500184F09 /* StockTableViewCell.swift */; };
+		2D5F8C82293BA9E300EDB140 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F8C81293BA9E300EDB140 /* SplashViewController.swift */; };
+		2D5F8C85293BAB3E00EDB140 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2D5F8C84293BAB3E00EDB140 /* Alamofire */; };
+		2D5F8C87293BAB5100EDB140 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F8C86293BAB5100EDB140 /* NetworkingProvider.swift */; };
+		2D5F8C8B293BFD8A00EDB140 /* StockSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F8C8A293BFD8A00EDB140 /* StockSearch.swift */; };
+		2DA56DC82939ABEE008C3DFC /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA56DC72939ABEE008C3DFC /* StockListViewController.swift */; };
+		2DA56DCA2939AC79008C3DFC /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA56DC92939AC79008C3DFC /* StockTableViewCell.swift */; };
 		2DA9E1BB292DA07D00EF5845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E1BA292DA07D00EF5845 /* AppDelegate.swift */; };
 		2DA9E1BD292DA07D00EF5845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9E1BC292DA07D00EF5845 /* SceneDelegate.swift */; };
 		2DA9E1C2292DA07D00EF5845 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DA9E1C0292DA07D00EF5845 /* Main.storyboard */; };
@@ -20,11 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D45784A2936849800184F09 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		2D45784C293684C400184F09 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
-		2D45784E2936881100184F09 /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
-		2D45785029368D1200184F09 /* TransactionSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSummaryViewController.swift; sourceTree = "<group>"; };
-		2D4578522936914500184F09 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
+		2D5F8C81293BA9E300EDB140 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		2D5F8C86293BAB5100EDB140 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
+		2D5F8C8A293BFD8A00EDB140 /* StockSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearch.swift; sourceTree = "<group>"; };
+		2DA56DC72939ABEE008C3DFC /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
+		2DA56DC92939AC79008C3DFC /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		2DA9E1B7292DA07D00EF5845 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA9E1BA292DA07D00EF5845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DA9E1BC292DA07D00EF5845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D5F8C85293BAB3E00EDB140 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,11 +68,11 @@
 			children = (
 				2DA9E1BA292DA07D00EF5845 /* AppDelegate.swift */,
 				2DA9E1BC292DA07D00EF5845 /* SceneDelegate.swift */,
-				2D45784A2936849800184F09 /* LoginViewController.swift */,
-				2D45784E2936881100184F09 /* StockListViewController.swift */,
-				2D45784C293684C400184F09 /* StockDetailViewController.swift */,
-				2D45785029368D1200184F09 /* TransactionSummaryViewController.swift */,
-				2D4578522936914500184F09 /* StockTableViewCell.swift */,
+				2D5F8C81293BA9E300EDB140 /* SplashViewController.swift */,
+				2DA56DC72939ABEE008C3DFC /* StockListViewController.swift */,
+				2DA56DC92939AC79008C3DFC /* StockTableViewCell.swift */,
+				2D5F8C86293BAB5100EDB140 /* NetworkingProvider.swift */,
+				2D5F8C8A293BFD8A00EDB140 /* StockSearch.swift */,
 				2DA9E1C0292DA07D00EF5845 /* Main.storyboard */,
 				2DA9E1C3292DA07E00EF5845 /* Assets.xcassets */,
 				2DA9E1C5292DA07E00EF5845 /* LaunchScreen.storyboard */,
@@ -95,6 +97,9 @@
 			dependencies = (
 			);
 			name = FinalProject;
+			packageProductDependencies = (
+				2D5F8C84293BAB3E00EDB140 /* Alamofire */,
+			);
 			productName = FinalProject;
 			productReference = 2DA9E1B7292DA07D00EF5845 /* FinalProject.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +128,9 @@
 				Base,
 			);
 			mainGroup = 2DA9E1AE292DA07D00EF5845;
+			packageReferences = (
+				2D5F8C83293BAB3E00EDB140 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 2DA9E1B8292DA07D00EF5845 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,13 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D4578532936914500184F09 /* StockTableViewCell.swift in Sources */,
-				2D45785129368D1200184F09 /* TransactionSummaryViewController.swift in Sources */,
-				2D45784D293684C400184F09 /* StockDetailViewController.swift in Sources */,
-				2D45784B2936849800184F09 /* LoginViewController.swift in Sources */,
+				2DA56DC82939ABEE008C3DFC /* StockListViewController.swift in Sources */,
 				2DA9E1BB292DA07D00EF5845 /* AppDelegate.swift in Sources */,
+				2D5F8C8B293BFD8A00EDB140 /* StockSearch.swift in Sources */,
+				2D5F8C87293BAB5100EDB140 /* NetworkingProvider.swift in Sources */,
+				2DA56DCA2939AC79008C3DFC /* StockTableViewCell.swift in Sources */,
 				2DA9E1BD292DA07D00EF5845 /* SceneDelegate.swift in Sources */,
-				2D45784F2936881100184F09 /* StockListViewController.swift in Sources */,
+				2D5F8C82293BA9E300EDB140 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +382,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2D5F8C83293BAB3E00EDB140 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2D5F8C84293BAB3E00EDB140 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2D5F8C83293BAB3E00EDB140 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2DA9E1AF292DA07D00EF5845 /* Project object */;
 }
