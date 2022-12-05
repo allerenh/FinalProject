@@ -15,15 +15,30 @@ final class NetworkingProvider {
     static let shared = NetworkingProvider()
 
     private let kStatusOk = 200...299
-    
+    private let apiKey = "USONIA63A43XCS0U"
     
     func getStocks(keywords: String, completion: @escaping ([BestMatches]) -> ()) {
         
-        let apiKey = "USONIA63A43XCS0U"
+
         let url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(apiKey)"
 
         AF.request(url, method: .get).validate(statusCode: kStatusOk ).responseDecodable(of: SearchResponse.self) { response in
             if let data = response.value?.bestMatches {
+                completion(data)
+                print("OK")
+            } else {
+                print(response.error?.responseCode ?? "ERROR")
+            }
+        }
+    }
+    
+    func getQuotes(symbol:String, completion: @escaping (GlobalQuote) -> ()) {
+        
+        let url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=\(apiKey)"
+        print("symbol")
+        print(symbol)
+        AF.request(url, method: .get).validate(statusCode: kStatusOk ).responseDecodable(of: QuoteResponse.self) { response in
+            if let data = response.value?.globalQuote {
                 completion(data)
                 print("OK")
             } else {

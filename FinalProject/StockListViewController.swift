@@ -25,10 +25,11 @@ class StockListViewController: UIViewController {
     }
     
     func getStockList() {
-        NetworkingProvider.shared.getStocks(keywords: keywords) { stockList in
-            self.stockList = stockList
+//        interactor
+        NetworkingProvider.shared.getStocks(keywords: keywords, completion: { data in
+            self.stockList = data
             self.stockListTableView.reloadData()
-        }
+        })
     }
   
 }
@@ -45,6 +46,11 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        router
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "StockDetailViewController") as! StockDetailViewController
+        vc.getSymbol(symbol: stockList[indexPath.row].symbol ?? "", name: stockList[indexPath.row].name ?? "" )
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

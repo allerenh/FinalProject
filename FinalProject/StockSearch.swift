@@ -8,17 +8,17 @@
 import Foundation
 
 struct SearchResponse: Decodable {
-    
     let bestMatches: [BestMatches]
 }
 
 struct BestMatches: Decodable {
-    let symbol: String
-    let name: String
-    let type: String
-    let region: String
-    let currency: String
+    let symbol: String?
+    let name: String?
+    let type: String?
+    let region: String?
+    let currency: String?
     
+    // to custom the coding
     enum CodingKeys: String, CodingKey {
         case symbol = "1. symbol"
         case name = "2. name"

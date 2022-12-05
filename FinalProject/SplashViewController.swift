@@ -11,7 +11,7 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -25,10 +25,15 @@ class SplashViewController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "StockListViewController") as? StockListViewController else {
             return
         }
-        
         let navigation = UINavigationController(rootViewController: vc)
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true)// to present the view controller modally
+//        navigation.title = "Acciones"
+        let viewControllers = [navigation]
+        let tabBar = UITabBarController()
+        
+        tabBar.viewControllers = viewControllers
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: true)// to present the view controller modally
+
     }
 
 }
