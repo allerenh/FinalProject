@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1F90C3293E6E5500AD2305 /* CompanyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1F90C2293E6E5500AD2305 /* CompanyOverview.swift */; };
 		2D4DFD67293D5DCA00B61D30 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4DFD66293D5DCA00B61D30 /* StockDetailViewController.swift */; };
 		2D4DFD6B293D822800B61D30 /* StockQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4DFD6A293D822800B61D30 /* StockQuote.swift */; };
 		2D5F8C82293BA9E300EDB140 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5F8C81293BA9E300EDB140 /* SplashViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D1F90C2293E6E5500AD2305 /* CompanyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyOverview.swift; sourceTree = "<group>"; };
 		2D4DFD66293D5DCA00B61D30 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		2D4DFD6A293D822800B61D30 /* StockQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuote.swift; sourceTree = "<group>"; };
 		2D5F8C81293BA9E300EDB140 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				2DA56DC72939ABEE008C3DFC /* StockListViewController.swift */,
 				2D4DFD66293D5DCA00B61D30 /* StockDetailViewController.swift */,
 				2DA56DC92939AC79008C3DFC /* StockTableViewCell.swift */,
+				2D1F90C2293E6E5500AD2305 /* CompanyOverview.swift */,
 				2D4DFD6A293D822800B61D30 /* StockQuote.swift */,
 				2D5F8C8A293BFD8A00EDB140 /* StockSearch.swift */,
 				2D5F8C86293BAB5100EDB140 /* NetworkingProvider.swift */,
@@ -171,6 +174,7 @@
 				2D5F8C8B293BFD8A00EDB140 /* StockSearch.swift in Sources */,
 				2D5F8C87293BAB5100EDB140 /* NetworkingProvider.swift in Sources */,
 				2DA56DCA2939AC79008C3DFC /* StockTableViewCell.swift in Sources */,
+				2D1F90C3293E6E5500AD2305 /* CompanyOverview.swift in Sources */,
 				2DA9E1BD292DA07D00EF5845 /* SceneDelegate.swift in Sources */,
 				2D5F8C82293BA9E300EDB140 /* SplashViewController.swift in Sources */,
 			);
