@@ -12,13 +12,13 @@ struct SearchResponse: Decodable {
 }
 
 struct BestMatches: Decodable {
-    let symbol: String?
-    let name: String?
-    let type: String?
-    let region: String?
-    let currency: String?
+    let symbol: String
+    let name: String
+    let type: String
+    let region: String
+    let currency: String
     
-    // to custom the coding
+    //   to custom the keys provided by the api
     enum CodingKeys: String, CodingKey {
         case symbol = "1. symbol"
         case name = "2. name"

@@ -17,6 +17,8 @@ class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+//    viewDidAppear:  Notifies the view controller that its view was added to a view hierarchy.
         goToStockListViewController()
     }
     
@@ -25,14 +27,28 @@ class SplashViewController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "StockListViewController") as? StockListViewController else {
             return
         }
+            
+        let presenter = StockListPresenter()
+        let interactor = StockListInteractor()
+        let router = StockListRouter()
+        
+        vc.presenter = presenter
+        
+        presenter.view = vc
+        presenter.interactor = interactor
+        presenter.router = router
+        
+        router.view = vc
+        
+        interactor.presenter = presenter
+        
         let navigation = UINavigationController(rootViewController: vc)
-//        navigation.title = "Acciones"
         let viewControllers = [navigation]
         let tabBar = UITabBarController()
         
         tabBar.viewControllers = viewControllers
         tabBar.modalPresentationStyle = .fullScreen
-        present(tabBar, animated: true)// to present the view controller modally
+        present(tabBar, animated: true)
 
     }
 

@@ -22,16 +22,16 @@
 
 import Foundation
 
-struct QuoteResponse: Decodable {
+struct QuotesResponse: Decodable {
     
-    let globalQuote: GlobalQuote?
+    let globalQuote: GlobalQuotes
     
     enum CodingKeys: String, CodingKey {
         case globalQuote = "Global Quote"
     }
 }
 
-struct GlobalQuote: Decodable {
+struct GlobalQuotes: Decodable {
     
     let symbol: String
     let open: String

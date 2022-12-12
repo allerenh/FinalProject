@@ -7,10 +7,20 @@
 
 import UIKit
 
+protocol StockListViewProtocol {
+    
+    func setStockList(_ stockList:[BestMatches])
+    
+}
+
+
 class StockListViewController: UIViewController {
     
     @IBOutlet weak var stockListTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    var presenter: StockListPresenterProtocol?
+    
     
     var keywords: String = "Apple"
     var stockList: [BestMatches] = []
@@ -21,17 +31,10 @@ class StockListViewController: UIViewController {
         
         stockListTableView.dataSource = self
         stockListTableView.delegate = self
-        getStockList()
+       
     }
     
-    func getStockList() {
-//        interactor
-        NetworkingProvider.shared.getStocks(keywords: keywords, completion: { data in
-           
-            self.stockList = data
-            self.stockListTableView.reloadData()
-        })
-    }
+
   
 }
 
@@ -41,14 +44,18 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = stockListTableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as! StockTableViewCell
+        guard let cell = stockListTableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as? StockTableViewCell else {
+            return UITableViewCell()
+        }
         cell.setup(bestMatches: stockList[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        router
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "StockDetailViewController") as! StockDetailViewController
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StockDetailViewController") as? StockDetailViewController else {
+            return
+        }
         vc.getSymbol(symbol: stockList[indexPath.row].symbol, name: stockList[indexPath.row].name, currency: stockList[indexPath.row].currency, country: stockList[indexPath.row].region)
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -62,8 +69,20 @@ extension StockListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     
         keywords = searchText
-        getStockList()
+        
+        presenter?.didWriteAKeyword(keywords)
+        
         stockListTableView.reloadData()
     }
 
+}
+
+extension StockListViewController: StockListViewProtocol {
+    
+    func setStockList(_ stockList: [BestMatches]) {
+        
+        self.stockList = stockList
+        stockListTableView.reloadData()
+    }
+    
 }

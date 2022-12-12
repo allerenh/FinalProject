@@ -7,19 +7,17 @@
 
 import UIKit
 
-class quotesDetailCollectionViewCell: UICollectionViewCell {
+class QuotesDetailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var secondTitleLabel: UILabel!
     @IBOutlet weak var secondValueLabel: UILabel!
     
-    func cellSetup(info: Information) {
-        titleLabel.text = info.title1
-        valueLabel.text = info.value1
-        secondTitleLabel.text = info.title2
-        secondValueLabel.text = info.value2
-       
+    func cellSetup(quotesDetail: QuotesInformation) {
+        titleLabel.text = quotesDetail.title1
+        valueLabel.text = quotesDetail.value1
+        secondTitleLabel.text = quotesDetail.title2
+        secondValueLabel.text = quotesDetail.value2
     }
-    
 }

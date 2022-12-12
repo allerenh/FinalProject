@@ -7,34 +7,37 @@
 
 import Foundation
 
+//this struct represents the APIs answer
+//decodable: json to swift
 struct CompanyOverviewResponse: Decodable {
     
-    let symbol: String?
-    let assetType: String?
-    let name: String?
-    let description: String?
-    let exchange: String?
-    let currency: String?
-    let country: String?
-    let sector: String?
-    let industry: String?
-    let marketCapitalization: String?
-    let ebitda: String?
-    let peRatio: String?
-    let bookValue: String?
-    let eps: String?
-    let dividendPerShare: String?
-    let dividendYield: String?
-    let profitMargin: String?
-    let operatingMarginTTM: String?
-    let returnOfAssetsTTM: String?
-    let returnOfEquityTTM: String?
-    let revenueTTM: String?
-    let grossProfitTTM: String?
-    let beta: String?
-    let fiftytwoWeekHigh: String?
-    let fiftytwoWeekLow: String?
+    let symbol: String
+    let assetType: String
+    let name: String
+    let description: String
+    let exchange: String
+    let currency: String
+    let country: String
+    let sector: String
+    let industry: String
+    let marketCapitalization: String
+    let ebitda: String
+    let peRatio: String
+    let bookValue: String
+    let eps: String
+    let dividendPerShare: String
+    let dividendYield: String
+    let profitMargin: String
+    let operatingMarginTTM: String
+    let returnOfAssetsTTM: String
+    let returnOfEquityTTM: String
+    let revenueTTM: String
+    let grossProfitTTM: String
+    let beta: String
+    let fiftytwoWeekHigh: String
+    let fiftytwoWeekLow: String
     
+    //    to custom the keys provided by the api
     enum CodingKeys: String, CodingKey {
         case symbol = "Symbol"
         case assetType = "AssetType"
