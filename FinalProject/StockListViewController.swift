@@ -12,21 +12,22 @@ class StockListViewController: UIViewController {
     @IBOutlet weak var stockListTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var keywords: String = ""
+    var keywords: String = "Apple"
     var stockList: [BestMatches] = []
-
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         stockListTableView.dataSource = self
         stockListTableView.delegate = self
-        
+        getStockList()
     }
     
     func getStockList() {
 //        interactor
         NetworkingProvider.shared.getStocks(keywords: keywords, completion: { data in
+           
             self.stockList = data
             self.stockListTableView.reloadData()
         })
@@ -48,7 +49,7 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        router
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "StockDetailViewController") as! StockDetailViewController
-        vc.getSymbol(symbol: stockList[indexPath.row].symbol ?? "", name: stockList[indexPath.row].name ?? "" )
+        vc.getSymbol(symbol: stockList[indexPath.row].symbol, name: stockList[indexPath.row].name, currency: stockList[indexPath.row].currency, country: stockList[indexPath.row].region)
         
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -59,7 +60,7 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
 extension StockListViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      
+    
         keywords = searchText
         getStockList()
         stockListTableView.reloadData()

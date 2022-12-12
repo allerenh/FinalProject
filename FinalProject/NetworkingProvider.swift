@@ -13,12 +13,12 @@ final class NetworkingProvider {
     
     
     static let shared = NetworkingProvider()
-    
     private let kStatusOk = 200...299
     private let apiKey = "USONIA63A43XCS0U"
     
+//    TSLA, AAPL, AMZN, NVDA, MSFT, META, AMD, NFLX, BABA, CRM. GOOGL, BA, GOOG, ENPH, PYPL, COST, XOM, BAC, NIO, WFC, PDD, SHOP, DG, UNH, ZS, CVX, JPM, HD, BX, V, MRVL, CRWD, XPEV, WMT, AVGO, JNJ, SNOW, ADBE, INTC, CMCSA, KO, MU, LMT, PFE, TSM, SBUX, VZ
+    
     func getStocks(keywords: String, completion: @escaping ([BestMatches]) -> ()) {
-        
         
         let url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keywords)&apikey=\(apiKey)"
         

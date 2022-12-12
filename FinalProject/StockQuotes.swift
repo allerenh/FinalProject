@@ -29,21 +29,21 @@ struct QuoteResponse: Decodable {
     enum CodingKeys: String, CodingKey {
         case globalQuote = "Global Quote"
     }
-    
 }
 
 struct GlobalQuote: Decodable {
     
-    let symbol: String?
-    let open: String?
-    let high: String?
-    let low: String?
-    let price: String?
-    let volume: String?
-    let previousClose: String?
-    let change: String?
-    let changePercent: String?
+    let symbol: String
+    let open: String
+    let high: String
+    let low: String
+    let price: String
+    let volume: String
+    let previousClose: String
+    let change: String
+    let changePercent: String
     
+    //    to custom the keys provided by the api
     enum CodingKeys: String, CodingKey {
         
         case symbol = "01. symbol"
@@ -56,6 +56,5 @@ struct GlobalQuote: Decodable {
         case change = "09. change"
         case changePercent = "10. change percent"
     }
-    
     
 }
