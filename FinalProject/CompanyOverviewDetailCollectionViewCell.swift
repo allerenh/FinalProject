@@ -18,7 +18,7 @@ class CompanyOverviewDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var fourthTitleLabel: UILabel!
     @IBOutlet weak var fourthValueLabel: UILabel!
     
-    func cellSetup(companyOverviewDetail: CompanyOverviewInformation) {
+    func cellCompanyOverviewSetup(companyOverviewDetail: CompanyOverviewInformation) {
         firstTitleLabel.text = companyOverviewDetail.title1
         firstValueLabel.text = companyOverviewDetail.value1
         secondTitleLabel.text = companyOverviewDetail.title2

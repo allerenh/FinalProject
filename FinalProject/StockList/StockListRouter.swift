@@ -6,17 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
 protocol StockListRouterProtocol {
     
-    func goToStockDetailViewController()
+    func goToStockDetailViewController(stockSelected: BestMatches)
 }
 
 class StockListRouter: StockListRouterProtocol {
     
-    var view: StockListViewController?
+    var view: UIViewController?
     
-    func goToStockDetailViewController() {
-        <#code#>
+    func goToStockDetailViewController(stockSelected: BestMatches) {
+
+    
+        let stockDetailViewController = StockDetailConfigurator.makeStockDetail(stockSelected: stockSelected)
+        view?.navigationController?.pushViewController(stockDetailViewController, animated: true)
     }
 }

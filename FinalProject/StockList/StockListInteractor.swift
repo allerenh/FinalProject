@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol StockListInteractorProtocol {
+protocol StockListInteractorProtocol: AnyObject {
     
     func getStockList(_ keywords: String)
     
@@ -15,7 +15,7 @@ protocol StockListInteractorProtocol {
 
 class StockListInteractor: StockListInteractorProtocol {
     
-    var presenter: StockListPresenterProtocol?
+    weak var presenter: StockListPresenterProtocol?
     
     func getStockList(_ keywords: String) {
 //        interactor

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class NetworkingProvider {
+class NetworkingProvider {
     
     static let shared = NetworkingProvider()
     private let kStatusOk = 200...299

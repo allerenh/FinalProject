@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StockListViewProtocol {
+protocol StockListViewProtocol: AnyObject {
     
     func setStockList(_ stockList:[BestMatches])
     
@@ -17,25 +17,24 @@ protocol StockListViewProtocol {
 class StockListViewController: UIViewController {
     
     @IBOutlet weak var stockListTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var searchStockBar: UISearchBar!
     
     var presenter: StockListPresenterProtocol?
     
     
-    var keywords: String = "Apple"
+    var keywords: String = ""
     var stockList: [BestMatches] = []
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        presenter?.didWriteAKeyword("Apple")
+        searchStockBar.placeholder = "Enter a company name or symbol"
+        searchStockBar.delegate = self
         stockListTableView.dataSource = self
         stockListTableView.delegate = self
        
     }
-    
-
-  
 }
 
 extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -52,29 +51,25 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        router
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StockDetailViewController") as? StockDetailViewController else {
-            return
-        }
-        vc.getSymbol(symbol: stockList[indexPath.row].symbol, name: stockList[indexPath.row].name, currency: stockList[indexPath.row].currency, country: stockList[indexPath.row].region)
         
-        self.navigationController?.pushViewController(vc, animated: true)
+        presenter?.didSelectStock(indexPath.row)
         
     }
-    
 }
 
 extension StockListViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     
-        keywords = searchText
-        
+        if searchText.isEmpty {
+            keywords = "AAPL"
+        } else {
+            keywords = searchText
+        }
+  
         presenter?.didWriteAKeyword(keywords)
-        
         stockListTableView.reloadData()
     }
-
 }
 
 extension StockListViewController: StockListViewProtocol {
@@ -84,5 +79,4 @@ extension StockListViewController: StockListViewProtocol {
         self.stockList = stockList
         stockListTableView.reloadData()
     }
-    
 }

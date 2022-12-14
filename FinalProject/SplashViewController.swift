@@ -24,25 +24,9 @@ class SplashViewController: UIViewController {
     
     
     func goToStockListViewController() {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "StockListViewController") as? StockListViewController else {
-            return
-        }
-            
-        let presenter = StockListPresenter()
-        let interactor = StockListInteractor()
-        let router = StockListRouter()
         
-        vc.presenter = presenter
-        
-        presenter.view = vc
-        presenter.interactor = interactor
-        presenter.router = router
-        
-        router.view = vc
-        
-        interactor.presenter = presenter
-        
-        let navigation = UINavigationController(rootViewController: vc)
+        let stockListViewController = StockListConfigurator.makeStockList()
+        let navigation = UINavigationController(rootViewController: stockListViewController)
         let viewControllers = [navigation]
         let tabBar = UITabBarController()
         

@@ -7,18 +7,20 @@
 
 import Foundation
 
-protocol StockListPresenterProtocol {
+protocol StockListPresenterProtocol: AnyObject {
     
     func didWriteAKeyword(_ keywords: String)
     func didGetStockList(_ stockList:[BestMatches])
+    func didSelectStock(_ index: Int)
 }
 
 class StockListPresenter: StockListPresenterProtocol {
     
-    var view: StockListViewProtocol?
+    weak var view: StockListViewProtocol?
     var interactor: StockListInteractorProtocol?
     var router: StockListRouterProtocol?
     
+    var stockList : [BestMatches] = []
     
     
     func didWriteAKeyword(_ keywords: String) {
@@ -26,8 +28,12 @@ class StockListPresenter: StockListPresenterProtocol {
     }
     
     func didGetStockList(_ stockList: [BestMatches]) {
+        self.stockList = stockList
         view?.setStockList(stockList)
         
     }
     
+    func didSelectStock(_ index: Int) {
+        router?.goToStockDetailViewController(stockSelected: stockList[index])
+    }
 }
