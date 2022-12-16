@@ -8,16 +8,16 @@
 import Foundation
 
 protocol StockDetailRouterProtocol {
-    func goToBuyStockViewController(_ stockSelected: BestMatches)
+    func goToTransactionStockViewController(_ stockSelected: BestMatches, _ stockPrice: Double, _ dailyStockPrice: [DailyClosePrice], _ transactionIdentifier: Bool)
 }
 
 class StockDetailRouter: StockDetailRouterProtocol {
     
     var view: StockDetailViewController?
     
-    func goToBuyStockViewController(_ stockSelected: BestMatches) {
+    func goToTransactionStockViewController(_ stockSelected: BestMatches, _ stockPrice: Double, _ dailyStockPrice: [DailyClosePrice], _ transactionIdentifier: Bool) {
     
-        let buyStockViewController = BuyStockConfigurator.makeBuyStock(stockSelected)
+        let buyStockViewController = TransactionStockConfigurator.makeBuyStock(stockSelected, stockPrice, dailyStockPrice, transactionIdentifier)
         view?.navigationController?.pushViewController(buyStockViewController, animated: true)
     }
     

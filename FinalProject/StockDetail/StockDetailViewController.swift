@@ -9,6 +9,8 @@ import UIKit
 import Charts
 
 protocol StockDetailViewProtocol: AnyObject {
+    func setDailyClosePrice(dailyClosePrice: [DailyClosePrice])
+    func setStockPrice(stockPrice: Double)
     func setQuotesInformation(quotesDetail: [QuotesInformation])
     func setCompanyOverviewInformation(companyOverviewDetail: [CompanyOverviewInformation])
     func setStockInformation(stockSelected: BestMatches)
@@ -27,10 +29,12 @@ class StockDetailViewController: UIViewController {
     @IBOutlet weak var companyOverviewCollectionView: UICollectionView!
     
     
+    var dailyClosePrice: [DailyClosePrice] = []
     var stockSelected: BestMatches!
+    var stockPrice: Double = 0
     var quotesDetail: [QuotesInformation] = []
     var companyOverviewDetail: [CompanyOverviewInformation] = []
-
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +46,17 @@ class StockDetailViewController: UIViewController {
 
     @IBAction func buyButtonAction(_ sender: Any) {
         
-        presenter?.didSelectBuyStock(stockSelected)
+        presenter?.didSelectBuyStock(stockSelected, stockPrice, dailyClosePrice)
+        
+    }
+    @IBAction func sellButtonAction(_ sender: Any) {
+        
+
+        presenter?.didSelectSellStock(stockSelected, stockPrice, dailyClosePrice)
         
     }
     
     func makingLineChart(_ datesString : [String], _ closeArray: [Double]) {
-        
         
 //       This is going to be the data that the graph displays.
         var dataEntries: [ChartDataEntry] = []
@@ -102,6 +111,14 @@ extension StockDetailViewController: UICollectionViewDataSource {
 }
 
 extension StockDetailViewController: StockDetailViewProtocol {
+    
+    func setDailyClosePrice(dailyClosePrice: [DailyClosePrice]) {
+        self.dailyClosePrice = dailyClosePrice
+    }
+    
+    func setStockPrice(stockPrice: Double) {
+        self.stockPrice = stockPrice
+    }
     
     func setQuotesInformation(quotesDetail: [QuotesInformation]) {
         self.quotesDetail = quotesDetail

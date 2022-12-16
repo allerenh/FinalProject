@@ -7,23 +7,42 @@
 
 import UIKit
 
-class TransactionStatusViewController: UIViewController {
+protocol TransactionStatusViewProtocol: AnyObject {
+    func setTransactionSummary(_ stockSelected: BestMatches,_ stockPrice: Double,_ transactionAmount: Double, _ transactionIdentifier: Bool)
+}
 
+class TransactionStatusViewController: UIViewController {
+    
+    var presenter: TransactionStatusPresenter?
+
+    @IBOutlet weak var purchaseAmountLabel: UILabel!
+    @IBOutlet weak var companyNameLabel: UILabel!
+    @IBOutlet weak var transactionTypeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        presenter?.onViewDidLoad()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func doneButtonAction(_ sender: Any) {
+        presenter?.didSelectDone()
     }
-    */
+}
 
+extension TransactionStatusViewController: TransactionStatusViewProtocol {
+    
+    func setTransactionSummary(_ stockSelected: BestMatches,_ stockPrice: Double,_ transactionAmount: Double,_ transactionIdentifier: Bool) {
+        
+        if transactionIdentifier == true {
+            transactionTypeLabel.text = "You have puchased"
+        } else {
+            transactionTypeLabel.text = "You have sold"
+        }
+        
+        
+        purchaseAmountLabel.text = "\(String(format: "%.2f", transactionAmount)) \(stockSelected.currency)"
+        companyNameLabel.text = stockSelected.name
+    }
+    
 }

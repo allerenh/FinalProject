@@ -18,13 +18,13 @@ class StockDetailInteractor: StockDetailInteractorProtocol {
     weak var presenter: StockDetailPresenterProtocol?
     
     func getQuotesDetail(_ symbol: String) {
-        NetworkingProvider.shared.getQuotes(symbol: symbol) { data in
-            self.presenter?.didGetQuotesDetail(quotesDetailResponse: data)
+        Networking.shared.getQuotes(symbol: symbol) { [weak self] data in
+            self?.presenter?.didGetQuotesDetail(quotesDetailResponse: data)
         }
     }
     
     func getCompanyOverviewDetail(_ symbol: String) {
-        NetworkingProvider.shared.getCompanyOverview(symbol: symbol) { data in
+        Networking.shared.getCompanyOverview(symbol: symbol) { data in
             self.presenter?.didGetCompanyOverview(companyResponse: data)
         }
     }
@@ -32,7 +32,7 @@ class StockDetailInteractor: StockDetailInteractorProtocol {
     
     func getLineChartDataDetail(_ symbol: String) {
         
-        NetworkingProvider.shared.getChartData(symbol: symbol) { data in
+        Networking.shared.getChartData(symbol: symbol) { data in
            
             self.presenter?.didGetLineChartData(data: data)
         }

@@ -1,21 +1,14 @@
-//
-//  Portfolio.swift
-//  FinalProject
-//
-//  Created by Ana Isabel Llerena Huayta on 14/12/22.
-//
-
+ 
 import Foundation
 
 
-struct Portfolio {
-    
+struct PortfolioData {
+
     let symbol: String
     let name: String
     let purchaseDate: Date
-    let purchasePrice: Double
+    let transactionAmount: Double
     let actualPrice: Double
-    let changePercent: Double
-    let changeValue: Double
-    
+    let transactionIdentifier: Bool
+
 }

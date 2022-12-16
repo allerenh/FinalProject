@@ -8,13 +8,11 @@
 import Foundation
 import Alamofire
 
-class NetworkingProvider {
+class Networking {
     
-    static let shared = NetworkingProvider()
+    static let shared = Networking()
     private let kStatusOk = 200...299
     private let apiKey = "845ORJKGPKPBXYVN"
-    
-//    TSLA, AAPL, AMZN, NVDA, MSFT, META, AMD, NFLX, BABA, CRM. GOOGL, BA, GOOG, ENPH, PYPL, COST, XOM, BAC, NIO, WFC, PDD, SHOP, DG, UNH, ZS, CVX, JPM, HD, BX, V, MRVL, CRWD, XPEV, WMT, AVGO, JNJ, SNOW, ADBE, INTC, CMCSA, KO, MU, LMT, PFE, TSM, SBUX, VZ
     
     func getStocks(keywords: String, completion: @escaping ([BestMatches]) -> ()) {
 

@@ -15,11 +15,13 @@ protocol StockDetailPresenterProtocol: AnyObject {
     func didGetQuotesDetail(quotesDetailResponse: GlobalQuotes)
     func didGetCompanyOverview(companyResponse: CompanyOverviewResponse)
     func didGetLineChartData(data : [String : TimeSeriesDaily])
-    func didSelectBuyStock(_ stockSelected: BestMatches)
+    func didSelectBuyStock(_ stockSelected: BestMatches,_ stockPrice: Double,_ dailyStockPrice: [DailyClosePrice])
+    func didSelectSellStock(_ stockSelected: BestMatches,_ stockPrice: Double,_ dailyStockPrice: [DailyClosePrice])
 
 }
 
 class StockDetailPresenter: StockDetailPresenterProtocol {
+
 
     
     weak var view: StockDetailViewProtocol?
@@ -29,6 +31,7 @@ class StockDetailPresenter: StockDetailPresenterProtocol {
     var stockSelected: BestMatches
     var quotesDetail: [QuotesInformation] = []
     var companyOverviewDetail: [CompanyOverviewInformation] = []
+    var transactionIdentifier: Bool = false
     
     init(stockSelected: BestMatches) {
         self.stockSelected = stockSelected
@@ -36,6 +39,8 @@ class StockDetailPresenter: StockDetailPresenterProtocol {
     }
     
     func onViewDidLoad() {
+        
+
         view?.setStockInformation(stockSelected: stockSelected)
         interactor?.getQuotesDetail(stockSelected.symbol)
         interactor?.getCompanyOverviewDetail(stockSelected.symbol)
@@ -45,18 +50,17 @@ class StockDetailPresenter: StockDetailPresenterProtocol {
     
     
     func didGetQuotesDetail(quotesDetailResponse: GlobalQuotes) {
-       
+
         let quotesDetail = [
             QuotesInformation(title1: "Price", value1: String(Double(quotesDetailResponse.price) ?? 0), title2: "Open", value2: String(Double(quotesDetailResponse.open) ?? 0)),
             QuotesInformation(title1: "High", value1: String(Double(quotesDetailResponse.high) ?? 0), title2: "Low", value2: String(Double(quotesDetailResponse.low) ?? 0)),
             QuotesInformation(title1: "Volume", value1: String(Int(quotesDetailResponse.volume) ?? 0) , title2: "Change Perc.", value2: quotesDetailResponse.changePercent),
             QuotesInformation(title1: "Change", value1: String(Double(quotesDetailResponse.change) ?? 0), title2: "Prev. close ", value2: String(Double(quotesDetailResponse.previousClose) ?? 0)),
         ]
-      
+        view?.setStockPrice(stockPrice: Double(quotesDetailResponse.price) ?? 0)
         view?.setQuotesInformation(quotesDetail: quotesDetail)
-//        self.quotesDetailCollectionview.reloadData()
-        print(quotesDetail)
     }
+    
     
     func didGetCompanyOverview(companyResponse: CompanyOverviewResponse){
        
@@ -77,58 +81,51 @@ class StockDetailPresenter: StockDetailPresenterProtocol {
     
     func didGetLineChartData(data : [String : TimeSeriesDaily]) {
         
+      
+        var dailyInfo: [DailyClosePrice] = []
+        
+        let sorting = data.sorted(by: {$0.key < $1.key})
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+
         
-        var dates : [Date] = []
-        var close : [Double] = []
-        
-        var newDict : [Date : Double] = [:]
-        
-//       looping over the dictionary provided by the api in order to separate keys and values and put them in their corresponding array.
-        for (key, value) in data {
-            
-            let keyDate = dateFormatter.date(from: key) // string -> date
-            dates.append(keyDate!)
-            close.append(Double(value.close)!)
-            
-        }
-        
-//      adding keys and values in a new dictionary
-        for i in 0...data.count-1 {
-            newDict[dates[i]] = close[i]
-        }
-        
-//      sorting the new dictionary by date
-        let orderedKeysAndValues = newDict.sorted(by: {$0.0 < $1.0})
-        
-//      dividing the new dictionary
-        var datesArray : [Date] = []
-        var closeArray : [Double] = []
-        
-        for (key,value) in orderedKeysAndValues {
-            datesArray.append(key)
-            closeArray.append(value)
-        }
-        
-//      date -> string
-        
+        var closePrice : [Double] = []
         var datesString : [String] = []
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short // short date format
         
-        for i in 0...datesArray.count-1 {
-            datesString.append(formatter.string(from: datesArray[i]))
+        sorting.forEach({
+            (dateString, timeSeriesDaily) in
+            let date = dateFormatter.date(from: dateString)!
+            let daily = DailyClosePrice(date: date, close: Double(timeSeriesDaily.close) ?? 0)
+            dailyInfo.append(daily)
+            
+            let dateShortFormat  = DateFormatter()
+            dateShortFormat.dateStyle = .short
+            
+            closePrice.append(Double(timeSeriesDaily.close) ?? 0)
+            datesString.append(dateShortFormat.string(from: date))
+            
+        })
+    
+        view?.setDailyClosePrice(dailyClosePrice: dailyInfo)
+        view?.makingLineChart(datesString, closePrice)
+        
+    }
+    
+    func didSelectBuyStock(_ stockSelected: BestMatches,_ stockPrice: Double,_ dailyStockPrice: [DailyClosePrice] ) {
+        transactionIdentifier = true
+        router?.goToTransactionStockViewController(stockSelected,stockPrice,dailyStockPrice,transactionIdentifier)
+    }
+    
+    func didSelectSellStock(_ stockSelected: BestMatches,_ stockPrice: Double,_ dailyStockPrice: [DailyClosePrice]) {
+        transactionIdentifier = false
+        
+        router?.goToTransactionStockViewController(stockSelected,stockPrice,dailyStockPrice,transactionIdentifier)
+           
         }
         
-        view?.makingLineChart(datesString, closeArray)
         
     }
     
-    func didSelectBuyStock(_ stockSelected: BestMatches) {
-        router?.goToBuyStockViewController(stockSelected)
-    }
     
-    
-}
+

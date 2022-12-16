@@ -19,7 +19,6 @@ struct HistoricalData: Decodable {
 }
 
 
-
 struct TimeSeriesDaily: Decodable {
     let open: String
     let high: String

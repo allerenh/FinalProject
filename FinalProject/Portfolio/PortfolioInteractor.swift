@@ -9,11 +9,20 @@ import Foundation
 
 protocol PortfolioInteractorProtocol {
     
-    
+    func getPortfolio()
 }
 
 class PortfolioInteractor: PortfolioInteractorProtocol {
+
     
     weak var presenter: PortfolioPresenterProtocol?
+//    var myPortfolio : [PortfolioData] = []
+    
+    
+    func getPortfolio() {
+        
+        var myPortfolio = CoreDataManager.shared.fetchPortfolios()
+        presenter?.didGetPortfolio(myPortfolio: myPortfolio!)
+    }
     
 }

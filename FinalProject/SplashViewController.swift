@@ -26,12 +26,19 @@ class SplashViewController: UIViewController {
     func goToStockListViewController() {
         
         let stockListViewController = StockListConfigurator.makeStockList()
-        let navigation = UINavigationController(rootViewController: stockListViewController)
-        let viewControllers = [navigation]
+        let stockNavigation = UINavigationController(rootViewController: stockListViewController)
+        stockListViewController.title = "Search"
+        let portfolio = PortfolioConfigurator.makePortfolio()
+        let viewControllers = [stockNavigation,portfolio]
         let tabBar = UITabBarController()
-        
         tabBar.viewControllers = viewControllers
         tabBar.modalPresentationStyle = .fullScreen
+        tabBar.tabBar.items![0].title = "Search"
+        tabBar.tabBar.items![0].image = UIImage(named:"search")
+        tabBar.tabBar.items![1].title = "Portfolio"
+        tabBar.tabBar.items![1].image = UIImage(named:"portfolio")
+        
+
         present(tabBar, animated: true)
 
     }

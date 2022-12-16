@@ -19,7 +19,7 @@ class StockListInteractor: StockListInteractorProtocol {
     
     func getStockList(_ keywords: String) {
 //        interactor
-        NetworkingProvider.shared.getStocks(keywords: keywords, completion: { stockList in
+        Networking.shared.getStocks(keywords: keywords, completion: { stockList in
            
             self.presenter?.didGetStockList(stockList)
             

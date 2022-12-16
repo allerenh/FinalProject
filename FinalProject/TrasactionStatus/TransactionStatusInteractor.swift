@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+protocol TransactionStatusInteractorProtocol {
+    
+    func savePortfolio(portfolio: PortfolioData)
+    
+}
+
+class TransactionStatusInteractor: TransactionStatusInteractorProtocol {
+
+    weak var presenter: TransactionStatusPresenterProtocol?
+    
+    func savePortfolio(portfolio: PortfolioData) {
+        CoreDataManager.shared.savePortfolio(portfolio)
+    }
+    
+    
+}

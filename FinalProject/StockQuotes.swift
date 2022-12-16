@@ -31,6 +31,7 @@ struct QuotesResponse: Decodable {
     }
 }
 
+
 struct GlobalQuotes: Decodable {
     
     let symbol: String

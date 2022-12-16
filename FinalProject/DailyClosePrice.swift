@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+
+struct DailyClosePrice {
+    
+    let date: Date
+    let close: Double
+    
+}

@@ -14,5 +14,7 @@ protocol TransactionSummaryInteractorProtocol {
 
 class TransactionSummaryInteractor: TransactionSummaryInteractorProtocol {
     
+    weak var presenter: TransactionSummaryPresenterProtocol?
+    
     
 }
