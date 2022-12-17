@@ -9,11 +9,10 @@ import Foundation
 
 protocol TransactionStockInteractorProtocol  {
     
-    
+
 }
 
 class TransactionStockInteractor: TransactionStockInteractorProtocol {
     
     weak var presenter: TransactionStockPresenterProtocol?
-    
 }

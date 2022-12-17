@@ -28,8 +28,10 @@ class SplashViewController: UIViewController {
         let stockListViewController = StockListConfigurator.makeStockList()
         let stockNavigation = UINavigationController(rootViewController: stockListViewController)
         stockListViewController.title = "Search"
-        let portfolio = PortfolioConfigurator.makePortfolio()
-        let viewControllers = [stockNavigation,portfolio]
+        let portfolioViewController = PortfolioConfigurator.makePortfolio()
+        let portfolioNavigation = UINavigationController(rootViewController:portfolioViewController)
+        portfolioViewController.title = "Balance"
+        let viewControllers = [stockNavigation,portfolioNavigation]
         let tabBar = UITabBarController()
         tabBar.viewControllers = viewControllers
         tabBar.modalPresentationStyle = .fullScreen
@@ -37,8 +39,6 @@ class SplashViewController: UIViewController {
         tabBar.tabBar.items![0].image = UIImage(named:"search")
         tabBar.tabBar.items![1].title = "Portfolio"
         tabBar.tabBar.items![1].image = UIImage(named:"portfolio")
-        
-
         present(tabBar, animated: true)
 
     }

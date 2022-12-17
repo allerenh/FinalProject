@@ -23,7 +23,6 @@ class TransactionStatusPresenter: TransactionStatusPresenterProtocol {
     var transactionAmount: Double
     var dailyStockPrice: [DailyClosePrice]
     var transactionIdentifier: Bool
-    var portfolio: PortfolioData!
     
     init(stockSelected: BestMatches, stockPrice: Double, transactionAmount: Double, dailyStockPrice: [DailyClosePrice], transactionIdentifier: Bool) {
         self.stockSelected = stockSelected
@@ -34,18 +33,11 @@ class TransactionStatusPresenter: TransactionStatusPresenterProtocol {
         
     }
     
-
-    
     func onViewDidLoad() {
         view?.setTransactionSummary(stockSelected, stockPrice, transactionAmount, transactionIdentifier)
     }
     
     func didSelectDone() {
-        
-        portfolio = PortfolioData(symbol: stockSelected.symbol, name: stockSelected.name, purchaseDate: Date(), transactionAmount: transactionAmount, actualPrice: stockPrice, transactionIdentifier: transactionIdentifier)
-        interactor?.savePortfolio(portfolio: portfolio)
         router?.goToPortfolioViewController(transactionAmount, stockSelected, stockPrice, dailyStockPrice,transactionIdentifier)
     }
-    
-    
 }

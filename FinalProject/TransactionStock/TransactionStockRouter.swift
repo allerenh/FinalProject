@@ -14,8 +14,6 @@ protocol TransactionStockRouterProtocol {
 }
 
 class TransactionStockRouter: TransactionStockRouterProtocol {
-
-    
     
     var view: TransactionStockViewController?
     
@@ -23,5 +21,4 @@ class TransactionStockRouter: TransactionStockRouterProtocol {
         let transactionSummaryViewController = TransactionSummaryConfigurator.makeTransactionSummary(stockSelected,stockPrice, transactionAmount, dailyStockPrice, transactionIdentifier)
         view?.navigationController?.pushViewController(transactionSummaryViewController, animated: true)
     }
-
 }

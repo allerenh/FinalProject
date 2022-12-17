@@ -9,17 +9,31 @@ import UIKit
 
 class PortfolioTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    func setup(portfolio: PortfolioData) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        nameLabel.text = portfolio.name
+        dateLabel.text = dateFormatter.string(from: portfolio.purchaseDate)
+        quantityLabel.text = String(format: "%.2f",portfolio.shares) + " \(portfolio.symbol)"
+        amountLabel.text = String(format:"%.2f", portfolio.transactionAmount) + " USD"
+        
+        if (portfolio.transactionIdentifier == false) {
+            quantityLabel.textColor = .red
+            amountLabel.textColor = .red
+        } else {
+            quantityLabel.textColor = .green
+            amountLabel.textColor = .green
+        }
+    
     }
 
 }

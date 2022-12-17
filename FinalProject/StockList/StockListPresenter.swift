@@ -8,7 +8,6 @@
 import Foundation
 
 protocol StockListPresenterProtocol: AnyObject {
-    
     func didWriteAKeyword(_ keywords: String)
     func didGetStockList(_ stockList:[BestMatches])
     func didSelectStock(_ index: Int)
@@ -22,7 +21,6 @@ class StockListPresenter: StockListPresenterProtocol {
     
     var stockList : [BestMatches] = []
     
-    
     func didWriteAKeyword(_ keywords: String) {
         interactor?.getStockList(keywords)
     }
@@ -30,7 +28,6 @@ class StockListPresenter: StockListPresenterProtocol {
     func didGetStockList(_ stockList: [BestMatches]) {
         self.stockList = stockList
         view?.setStockList(stockList)
-        
     }
     
     func didSelectStock(_ index: Int) {

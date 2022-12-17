@@ -27,7 +27,6 @@ class TransactionSummaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.onViewDidLoad()
-       
     }
     
     @IBAction func confirmButtonAction(_ sender: Any) {
@@ -43,9 +42,5 @@ extension TransactionSummaryViewController: TransactionSummaryViewProtocol {
         companyNameLabel.text = stockSelected.name
         typeTransactionLabel.text = stockSelected.type
         sharesLabel.text = String(format: "%.2f",(purchaseAmountValue/stockPrice))
-//        format: "%.2f"
     }
-    
-    
-    
 }

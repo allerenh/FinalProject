@@ -8,9 +8,7 @@
 import Foundation
 
 protocol StockListInteractorProtocol: AnyObject {
-    
     func getStockList(_ keywords: String)
-    
 }
 
 class StockListInteractor: StockListInteractorProtocol {
@@ -18,12 +16,8 @@ class StockListInteractor: StockListInteractorProtocol {
     weak var presenter: StockListPresenterProtocol?
     
     func getStockList(_ keywords: String) {
-//        interactor
         Networking.shared.getStocks(keywords: keywords, completion: { stockList in
-           
             self.presenter?.didGetStockList(stockList)
-            
         })
     }
-    
 }

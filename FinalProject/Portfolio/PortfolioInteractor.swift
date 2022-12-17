@@ -16,12 +16,9 @@ class PortfolioInteractor: PortfolioInteractorProtocol {
 
     
     weak var presenter: PortfolioPresenterProtocol?
-//    var myPortfolio : [PortfolioData] = []
-    
-    
+
     func getPortfolio() {
-        
-        var myPortfolio = CoreDataManager.shared.fetchPortfolios()
+        let myPortfolio = CoreDataManager.shared.fetchPortfolios()
         presenter?.didGetPortfolio(myPortfolio: myPortfolio!)
     }
     

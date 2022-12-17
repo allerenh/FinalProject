@@ -21,13 +21,12 @@ class PortfolioViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         portfolioTableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         presenter?.onViewWillAppear()
+        tabBarController?.tabBar.isHidden = false
         navigationItem.hidesBackButton = true
     }
 }
@@ -42,21 +41,11 @@ extension PortfolioViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let data = myPortfolio[indexPath.row]
+        cell.setup(portfolio: myPortfolio[indexPath.row])
         
-        cell.label.text = "\(data.name) \(data.transactionAmount) "
-        
-        if data.transactionIdentifier == true {
-            cell.label.textColor = .green
-        } else {
-            cell.label.textColor = .red
-        }
 
         return cell
     }
-    
-    
-    
 }
 
 

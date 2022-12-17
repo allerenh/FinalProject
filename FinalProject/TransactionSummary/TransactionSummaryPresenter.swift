@@ -15,7 +15,6 @@ protocol TransactionSummaryPresenterProtocol: AnyObject {
 
 class TransactionSummaryPresenter: TransactionSummaryPresenterProtocol {
 
-
     weak var view: TransactionSummaryViewProtocol?
     var interactor: TransactionSummaryInteractorProtocol?
     var router: TransactionSummaryRouterProtocol?
@@ -25,6 +24,7 @@ class TransactionSummaryPresenter: TransactionSummaryPresenterProtocol {
     var transactionAmount: Double
     var dailyStockPrice: [DailyClosePrice]
     var transactionIdentifier: Bool
+    var portfolio: PortfolioData!
     
     init(stockSelected: BestMatches, stockPrice: Double, transactionAmount: Double, dailyStockPrice: [DailyClosePrice], transactionIdentifier: Bool) {
         self.stockSelected = stockSelected
@@ -39,6 +39,8 @@ class TransactionSummaryPresenter: TransactionSummaryPresenterProtocol {
     }
     
     func didSelectConfirm() {
+        portfolio = PortfolioData(symbol: stockSelected.symbol, name: stockSelected.name, purchaseDate: Date(), transactionAmount: transactionAmount, actualPrice: stockPrice, transactionIdentifier: transactionIdentifier)
+        interactor?.savePortfolio(portfolio: portfolio)
         router?.goToTransactionStatusViewController(transactionAmount, stockSelected, stockPrice, dailyStockPrice, transactionIdentifier)
         
     }

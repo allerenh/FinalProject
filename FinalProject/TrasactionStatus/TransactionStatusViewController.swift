@@ -15,12 +15,12 @@ class TransactionStatusViewController: UIViewController {
     
     var presenter: TransactionStatusPresenter?
 
-    @IBOutlet weak var purchaseAmountLabel: UILabel!
-    @IBOutlet weak var companyNameLabel: UILabel!
     @IBOutlet weak var transactionTypeLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.image = UIImage(named:"check")
         presenter?.onViewDidLoad()
         
     }
@@ -35,14 +35,11 @@ extension TransactionStatusViewController: TransactionStatusViewProtocol {
     func setTransactionSummary(_ stockSelected: BestMatches,_ stockPrice: Double,_ transactionAmount: Double,_ transactionIdentifier: Bool) {
         
         if transactionIdentifier == true {
-            transactionTypeLabel.text = "You have puchased"
+            transactionTypeLabel.text = "You have puchased \(String(format: "%.2f", transactionAmount)) \(stockSelected.currency) of \(stockSelected.name)"
         } else {
-            transactionTypeLabel.text = "You have sold"
+            transactionTypeLabel.text = "You have sold \(String(format: "%.2f", transactionAmount)) \(stockSelected.currency) of \(stockSelected.name)"
         }
         
-        
-        purchaseAmountLabel.text = "\(String(format: "%.2f", transactionAmount)) \(stockSelected.currency)"
-        companyNameLabel.text = stockSelected.name
     }
     
 }

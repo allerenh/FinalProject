@@ -9,12 +9,15 @@ import UIKit
 import Charts
 
 protocol StockDetailViewProtocol: AnyObject {
+    
+    func showSellButton()
     func setDailyClosePrice(dailyClosePrice: [DailyClosePrice])
     func setStockPrice(stockPrice: Double)
     func setQuotesInformation(quotesDetail: [QuotesInformation])
     func setCompanyOverviewInformation(companyOverviewDetail: [CompanyOverviewInformation])
     func setStockInformation(stockSelected: BestMatches)
     func makingLineChart(_ datesString : [String], _ closeArray: [Double])
+    
 }
 
 
@@ -27,6 +30,7 @@ class StockDetailViewController: UIViewController {
     @IBOutlet weak var currencyAndCountryLabel: UILabel!
     @IBOutlet weak var quotesDetailCollectionview: UICollectionView!
     @IBOutlet weak var companyOverviewCollectionView: UICollectionView!
+    @IBOutlet weak var sellButton: UIButton!
     
     
     var dailyClosePrice: [DailyClosePrice] = []
@@ -41,17 +45,18 @@ class StockDetailViewController: UIViewController {
         self.quotesDetailCollectionview.dataSource = self
         self.companyOverviewCollectionView.dataSource = self
         presenter?.onViewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {
-        
+
         presenter?.didSelectBuyStock(stockSelected, stockPrice, dailyClosePrice)
         
     }
+    
     @IBAction func sellButtonAction(_ sender: Any) {
         
-
         presenter?.didSelectSellStock(stockSelected, stockPrice, dailyClosePrice)
         
     }
@@ -69,6 +74,7 @@ class StockDetailViewController: UIViewController {
         let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: "Time Series (Daily)")   // to convert dataEntries into a LineChartDataSet
         let lineChartData = LineChartData(dataSet: lineChartDataSet) // Data object that encapsulates all data associated with a LineChart.
         
+        lineChartDataSet.drawCirclesEnabled = false
         viewChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: datesString) // to customize the x axis
         
         viewChart.data = lineChartData // add the data to the chart type
@@ -92,25 +98,23 @@ extension StockDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == quotesDetailCollectionview {
-            let cell = quotesDetailCollectionview.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! QuotesDetailCollectionViewCell
-            
+            guard let cell = quotesDetailCollectionview.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as? QuotesDetailCollectionViewCell else {return UICollectionViewCell()}
             cell.cellQuotesInformationSetup(quotesDetail: quotesDetail[indexPath.row])
             return cell
+            
         } else {
-            let cell = companyOverviewCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! CompanyOverviewDetailCollectionViewCell
-            
+            guard let cell = companyOverviewCollectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as? CompanyOverviewDetailCollectionViewCell else  {return UICollectionViewCell()}
             cell.cellCompanyOverviewSetup(companyOverviewDetail: companyOverviewDetail[indexPath.row])
-            
             return cell
         }
-        
-
     }
-    
-    
 }
 
 extension StockDetailViewController: StockDetailViewProtocol {
+
+    func showSellButton() {
+        sellButton.isHidden = false
+    }
     
     func setDailyClosePrice(dailyClosePrice: [DailyClosePrice]) {
         self.dailyClosePrice = dailyClosePrice
@@ -135,5 +139,4 @@ extension StockDetailViewController: StockDetailViewProtocol {
         self.NameAndSymbolLabel.text = "\(stockSelected.name) (\(stockSelected.symbol))"
         self.currencyAndCountryLabel.text = "\(stockSelected.currency)\n \(stockSelected.region)"
     }
-    
 }

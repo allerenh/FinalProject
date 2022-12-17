@@ -12,7 +12,6 @@ class TransactionSummaryConfigurator {
     
     static func makeTransactionSummary (_ stockSelected: BestMatches, _ stockPrice:Double,_ transactionAmount: Double, _ dailyStockPrice: [DailyClosePrice],_ transactionIdentifier: Bool) -> UIViewController {
         
-        
         let presenter = TransactionSummaryPresenter(stockSelected: stockSelected, stockPrice: stockPrice, transactionAmount: transactionAmount, dailyStockPrice: dailyStockPrice, transactionIdentifier: transactionIdentifier)
         let interactor = TransactionSummaryInteractor()
         
@@ -24,13 +23,10 @@ class TransactionSummaryConfigurator {
         let router = TransactionSummaryRouter()
         
         vc.presenter = presenter
-    
         presenter.view = vc
         presenter.router = router
         presenter.interactor = interactor
-       
         interactor.presenter = presenter
-        
         router.view = vc
         
         return vc

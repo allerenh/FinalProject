@@ -12,8 +12,6 @@ class StockListConfigurator {
     
     static func makeStockList() -> UIViewController {
         
-
-
         let presenter = StockListPresenter()
         let interactor = StockListInteractor()
         
@@ -23,15 +21,11 @@ class StockListConfigurator {
         }
             
         let router = StockListRouter()
-        
         vc.presenter = presenter
-        
         presenter.view = vc
         presenter.interactor = interactor
         presenter.router = router
-        
         router.view = vc
-        
         interactor.presenter = presenter
         
         return vc

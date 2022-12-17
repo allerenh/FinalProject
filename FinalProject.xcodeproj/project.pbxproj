@@ -192,8 +192,8 @@
 				2D7C55382949959D00799774 /* PortfolioInteractor.swift */,
 				2D7C553A294995C300799774 /* PortfolioRouter.swift */,
 				2D7C553C294995D200799774 /* PortfolioConfigurator.swift */,
-				2D0D64EC294B1E9A0016721C /* PortfolioTableViewCell.swift */,
 				2D7C552F294993C100799774 /* Portfolio.swift */,
+				2D0D64EC294B1E9A0016721C /* PortfolioTableViewCell.swift */,
 			);
 			path = Portfolio;
 			sourceTree = "<group>";
@@ -237,12 +237,12 @@
 				2DA56DC92939AC79008C3DFC /* StockTableViewCell.swift */,
 				2D5F8C8A293BFD8A00EDB140 /* StockSearch.swift */,
 				2DF707A4294793F30021E225 /* StockDetail */,
-				2D9BB7822940289000CC8F29 /* QuotesDetailCollectionViewCell.swift */,
 				2D81E2FA29465C03002BF67A /* CompanyOverviewDetailCollectionViewCell.swift */,
+				2D9BB7822940289000CC8F29 /* QuotesDetailCollectionViewCell.swift */,
 				2D0D64D5294A95510016721C /* DailyClosePrice.swift */,
 				2D315ED9294685E0009EB1CC /* CompanyOverviewInformation.swift */,
-				2D1F90C2293E6E5500AD2305 /* CompanyOverview.swift */,
 				2D9BB78429402BC200CC8F29 /* QuotesInformation.swift */,
+				2D1F90C2293E6E5500AD2305 /* CompanyOverview.swift */,
 				2D969B9629418525003BFF4C /* HistoricalData.swift */,
 				2D4DFD6A293D822800B61D30 /* StockQuotes.swift */,
 				2D7C55422949A54C00799774 /* TransactionStock */,

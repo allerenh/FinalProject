@@ -13,16 +13,12 @@ protocol StockListViewProtocol: AnyObject {
     
 }
 
-
 class StockListViewController: UIViewController {
     
     @IBOutlet weak var stockListTableView: UITableView!
-
     @IBOutlet weak var searchStockBar: UISearchBar!
     
     var presenter: StockListPresenterProtocol?
-    
-    
     var keywords: String = ""
     var stockList: [BestMatches] = []
     
@@ -34,6 +30,10 @@ class StockListViewController: UIViewController {
         stockListTableView.dataSource = self
         stockListTableView.delegate = self
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -51,9 +51,7 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         presenter?.didSelectStock(indexPath.row)
-        
     }
 }
 
@@ -66,7 +64,6 @@ extension StockListViewController: UISearchBarDelegate {
         } else {
             keywords = searchText
         }
-  
         presenter?.didWriteAKeyword(keywords)
         stockListTableView.reloadData()
     }
@@ -75,7 +72,6 @@ extension StockListViewController: UISearchBarDelegate {
 extension StockListViewController: StockListViewProtocol {
     
     func setStockList(_ stockList: [BestMatches]) {
-        
         self.stockList = stockList
         stockListTableView.reloadData()
     }

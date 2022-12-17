@@ -25,6 +25,5 @@ struct BestMatches: Decodable {
         case type = "3. type"
         case region = "4. region"
         case currency = "8. currency"
-    }
-    
+    }    
 }

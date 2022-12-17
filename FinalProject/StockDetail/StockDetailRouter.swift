@@ -14,10 +14,10 @@ protocol StockDetailRouterProtocol {
 class StockDetailRouter: StockDetailRouterProtocol {
     
     var view: StockDetailViewController?
-    
+
     func goToTransactionStockViewController(_ stockSelected: BestMatches, _ stockPrice: Double, _ dailyStockPrice: [DailyClosePrice], _ transactionIdentifier: Bool) {
     
-        let buyStockViewController = TransactionStockConfigurator.makeBuyStock(stockSelected, stockPrice, dailyStockPrice, transactionIdentifier)
+        let buyStockViewController = TransactionStockConfigurator.makeTransactionStock(stockSelected, stockPrice, dailyStockPrice, transactionIdentifier)
         view?.navigationController?.pushViewController(buyStockViewController, animated: true)
     }
     

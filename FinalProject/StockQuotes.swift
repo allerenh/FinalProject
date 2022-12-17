@@ -31,7 +31,6 @@ struct QuotesResponse: Decodable {
     }
 }
 
-
 struct GlobalQuotes: Decodable {
     
     let symbol: String
@@ -46,7 +45,6 @@ struct GlobalQuotes: Decodable {
     
     //    to custom the keys provided by the api
     enum CodingKeys: String, CodingKey {
-        
         case symbol = "01. symbol"
         case open = "02. open"
         case high = "03. high"
